@@ -3,32 +3,33 @@ version: "3.3"
 # setting it up to 4GB seems to work.
 services:
   cassandra-seed:
+    container_name: cassandra-seed
     image: cassandra:latest
-    #    ports:
-    #      - "9042:9042"
+    ports:
+      - "9042:9042"
     volumes:
-      - "cassandra_data_seed:/var/lib/cassandra"
+      - cassandra_data_seed:/var/lib/cassandra
     environment:
       - "CASSANDRA_SEEDS=cassandra-seed"
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
-      #      needed for setting up custom cluster name
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
 
-  cassandra1:
+  cassandra-replica-1:
+    container_name: cassandra-replica-1
     image: cassandra:latest
     volumes:
-      - "cassandra_data_1:/var/lib/cassandra"
+      - cassandra_data_1:/var/lib/cassandra
     environment:
       - "CASSANDRA_SEEDS=cassandra-seed"
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
-      #      needed for setting up custom cluster name
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
     depends_on:
       - cassandra-seed
 
-  cassandra2:
+  cassandra-replica-2:
+    container_name: cassandra-replica-2
     image: cassandra:latest
     volumes:
       - "cassandra_data_2:/var/lib/cassandra"
