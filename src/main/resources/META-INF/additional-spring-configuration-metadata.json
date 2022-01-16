@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "cinema.seats.rows.count",
+      "type": "java.lang.Integer",
+      "description": "Description for cinema.seats.rows.count."
+    },
+    {
+      "name": "cinema.seats.rows.seats",
+      "type": "java.lang.Integer",
+      "description": "Description for cinema.seats.rows.seats."
+    }
+  ]
+}

@@ -1,27 +1,32 @@
 package pl.kacperwleklak.srds.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+import lombok.NoArgsConstructor;
+import pl.kacperwleklak.srds.model.dao.TicketDAO;
+import pl.kacperwleklak.srds.model.dao.TicketKey;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
-@Table(value="seat")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Ticket {
 
-    @PrimaryKey
-    private Date showDate;
-    @PrimaryKey
+    private LocalDateTime date;
     private int theater;
-    @PrimaryKey
     private int row;
-    @PrimaryKey
     private int number;
-
     private boolean taken;
     private BigDecimal basePrice;
-    private String discount;
+    private Discount discount;
     private String movieTitle;
+
+    public TicketDAO toTicketDAO() {
+        TicketKey ticketKey = new TicketKey(date, theater, row, number);
+        return new TicketDAO(ticketKey, taken, basePrice, discount.name(), movieTitle);
+    }
 }
