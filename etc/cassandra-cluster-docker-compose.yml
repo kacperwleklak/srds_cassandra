@@ -14,6 +14,8 @@ services:
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - HEAP_NEWSIZE=128M
+      - MAX_HEAP_SIZE=2048M
 
   cassandra-replica-1:
     container_name: cassandra-replica-1
@@ -25,6 +27,8 @@ services:
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - HEAP_NEWSIZE=128M
+      - MAX_HEAP_SIZE=2048M
     depends_on:
       - cassandra-seed
 
@@ -36,9 +40,10 @@ services:
     environment:
       - "CASSANDRA_SEEDS=cassandra-seed"
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
-      #      needed for setting up custom cluster name
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - HEAP_NEWSIZE=128M
+      - MAX_HEAP_SIZE=2048M
     depends_on:
       - cassandra-seed
 

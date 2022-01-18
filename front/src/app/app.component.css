@@ -1,0 +1,30 @@
+.seat {
+  padding-top: 3px;
+  background-color: lightgreen;
+  border: 1px solid black;
+  text-align: center;
+  width: 46px;
+  height: 32px;
+  line-height: 1em;
+  font-size: 0.8em;
+  cursor: default!important;
+}
+
+.taken {
+  background-color: indianred;
+}
+
+.selected {
+  border: 3px dodgerblue dashed;
+}
+
+.seat p {
+  margin-bottom: 3px;
+}
+
+.screen {
+  width: 100%;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}

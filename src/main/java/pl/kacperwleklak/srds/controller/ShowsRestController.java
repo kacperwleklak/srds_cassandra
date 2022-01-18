@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.kacperwleklak.srds.controller.requests.NewShowRequest;
 import pl.kacperwleklak.srds.model.Show;
-import pl.kacperwleklak.srds.model.dao.TicketDAO;
 import pl.kacperwleklak.srds.services.TicketsService;
 
 import java.util.List;

@@ -8,13 +8,14 @@ import org.springframework.data.cassandra.core.mapping.Table;
 import pl.kacperwleklak.srds.model.Discount;
 import pl.kacperwleklak.srds.model.Ticket;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(value = "ticket")
-public class TicketDAO {
+public class TicketDAO implements Serializable {
 
     @PrimaryKey
     private TicketKey ticketKey;
