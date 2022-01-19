@@ -11,3 +11,27 @@ services:
       - SRDS_CASSANDRA_CONTACT_POINTS=cassandra-seed
       - SRDS_CASSANDRA_PORT=9042
       - SRDS_CASSANDRA_DATACENTER=se1
+
+  srds-cinema-2:
+    hostname: srds-cinema-2
+    container_name: srds-cinema-2
+    image: srds-cinema:latest
+    environment:
+      - SRDS_KEYSPACE_NAME=cinema
+      - SRDS_CASSANDRA_CONTACT_POINTS=cassandra-replica-1
+      - SRDS_CASSANDRA_PORT=9042
+      - SRDS_CASSANDRA_DATACENTER=se1
+    depends_on:
+      - srds-cinema-1
+
+  srds-cinema-3:
+    hostname: srds-cinema-3
+    container_name: srds-cinema-3
+    image: srds-cinema:latest
+    environment:
+      - SRDS_KEYSPACE_NAME=cinema
+      - SRDS_CASSANDRA_CONTACT_POINTS=cassandra-replica-2
+      - SRDS_CASSANDRA_PORT=9042
+      - SRDS_CASSANDRA_DATACENTER=se1
+    depends_on:
+      - srds-cinema-1

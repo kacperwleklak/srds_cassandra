@@ -7,3 +7,20 @@ services:
       - PYTHONUNBUFFERED=1
       - SRDS_SERVER_HOST=http://srds-cinema-1:8080
       - SRDS_MAX_SEATS_BULK=10
+
+  srds-stress-terser-2:
+    container_name: srds-stress-terser-2
+    image: srds-cinema-stress-tester:latest
+    environment:
+      - PYTHONUNBUFFERED=1
+      - SRDS_SERVER_HOST=http://srds-cinema-2:8080
+      - SRDS_MAX_SEATS_BULK=10
+
+  srds-stress-terser-3:
+    container_name: srds-stress-terser-3
+    image: srds-cinema-stress-tester:latest
+    environment:
+      - PYTHONUNBUFFERED=1
+      - SRDS_SERVER_HOST=http://srds-cinema-3:8080
+      - SRDS_MAX_SEATS_BULK=10
+

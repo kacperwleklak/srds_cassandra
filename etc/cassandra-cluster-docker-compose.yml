@@ -10,7 +10,7 @@ services:
     volumes:
       - cassandra_data_seed:/var/lib/cassandra
     environment:
-      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_SEEDS=cassandra-seed,cassandra-replica-1,cassandra-replica-2"
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
@@ -18,12 +18,13 @@ services:
       - MAX_HEAP_SIZE=2048M
 
   cassandra-replica-1:
+    hostname: cassandra-replica-1
     container_name: cassandra-replica-1
     image: cassandra:latest
     volumes:
       - cassandra_data_1:/var/lib/cassandra
     environment:
-      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_SEEDS=cassandra-seed,cassandra-replica-1,cassandra-replica-2"
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
@@ -33,12 +34,13 @@ services:
       - cassandra-seed
 
   cassandra-replica-2:
+    hostname: cassandra-replica-2
     container_name: cassandra-replica-2
     image: cassandra:latest
     volumes:
       - "cassandra_data_2:/var/lib/cassandra"
     environment:
-      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_SEEDS=cassandra-seed,cassandra-replica-1,cassandra-replica-2"
       - "CASSANDRA_CLUSTER_NAME=Test Cluster"
       - "CASSANDRA_DC=se1"
       - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
