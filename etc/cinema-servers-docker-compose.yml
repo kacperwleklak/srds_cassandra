@@ -1,6 +1,7 @@
 version: "3.3"
 services:
   srds-cinema-1:
+    hostname: srds-cinema-1
     container_name: srds-cinema-1
     image: srds-cinema:latest
     ports:
@@ -10,9 +11,3 @@ services:
       - SRDS_CASSANDRA_CONTACT_POINTS=cassandra-seed
       - SRDS_CASSANDRA_PORT=9042
       - SRDS_CASSANDRA_DATACENTER=se1
-
-
-volumes:
-  cassandra_data_seed:
-  cassandra_data_1:
-  cassandra_data_2:
